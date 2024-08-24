@@ -63,9 +63,6 @@
                                 </form>
 
                             </li>
-
-
-
                         @endauth
                     </ul>
                 </div>

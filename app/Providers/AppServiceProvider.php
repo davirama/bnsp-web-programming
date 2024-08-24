@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         View::composer('layouts.main', AccountComposer::class);
-        // View::composer('layouts.admin', AccountComposer::class);
+        View::composer('peserta.dashboard', AccountComposer::class);
+        View::composer('peserta.formpendaftaran', AccountComposer::class);
     }
 }
