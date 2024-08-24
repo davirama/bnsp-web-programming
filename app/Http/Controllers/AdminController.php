@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 use App\Mail\DemoMail;
+use App\Models\Agama;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
@@ -44,6 +45,200 @@ class AdminController
 
         // Mengembalikan data ke view editpengguna
         return view('admin.editpengguna', compact('account'));
+    }
+
+    public function formvalidasi($user_id)
+    {
+        // Fetch the user with the given user_id
+        $account = AccountUser::findOrFail($user_id);
+
+        // Fetch related data using Eloquent models
+        $provinces = DB::select('SELECT * FROM provinces');
+        $cities = DB::select('SELECT * FROM cities');
+        $agamas = DB::select('SELECT * FROM agama');
+
+        return view('admin.validasipendaftar', compact('account', 'provinces', 'cities', 'agamas'));
+    }
+
+    public function terimaValidasi($user_id)
+    {
+        try {
+            // Temukan pendaftar berdasarkan user_id
+            $account = AccountUser::findOrFail($user_id);
+
+            // Update status pendaftar dan message_status_daftar
+            $account->update([
+                'status_daftar' => 'tervalidasi',
+                'message_status_daftar' => 'Data Kamu Telah divalidasi',
+            ]);
+
+            // Redirect ke halaman list akun pengguna dengan pesan sukses
+            return redirect()->route('listakunpengguna')->with('success', 'Pendaftar berhasil divalidasi.');
+        } catch (\Exception $e) {
+            // Tangkap error jika terjadi
+            return back()->with('error', 'Terjadi kesalahan saat memvalidasi pendaftar: ' . $e->getMessage());
+        }
+    }
+
+    public function tolakValidasi($user_id)
+    {
+        try {
+            // Temukan pendaftar berdasarkan user_id
+            $accountUser = AccountUser::findOrFail($user_id);
+
+            // Hapus file dari storage jika ada
+            if ($accountUser->foto && Storage::exists('public/foto/' . $accountUser->foto)) {
+                Storage::delete('public/foto/' . $accountUser->foto);
+            }
+
+            if ($accountUser->video && Storage::exists('public/video/' . $accountUser->video)) {
+                Storage::delete('public/video/' . $accountUser->video);
+            }
+
+            // Update status pendaftar dan kosongkan data yang relevan
+            $accountUser->update([
+                'status_daftar' => 'belum melengkapi',
+                'message_status_daftar' => 'Lengkapi Kembali Data Kamu Dengan Benar',
+                'nama_lengkap' => null,
+                'address_ktp' => null,
+                'address_now' => null,
+                'kecamatan' => null,
+                'province_id' => null,
+                'city_id' => null,
+                'telp_number' => null,
+                'tgl_lahir' => null,
+                'kewarganegaraan' => null,
+                'nama_kewarganegaraan' => null,
+                'tempat_lahir' => null,
+                'province_id_lahir' => null,
+                'city_id_lahir' => null,
+                'negara_lahir' => null,
+                'jenis_kelamin' => null,
+                'status_menikah' => null,
+                'agama_id' => null,
+                'foto' => null,
+                'video' => null,
+            ]);
+
+            // Redirect ke halaman list akun pengguna dengan pesan sukses
+            return redirect()->route('listakunpengguna')->with('success', 'Pendaftar berhasil ditolak dan data telah dikosongkan.');
+        } catch (\Exception $e) {
+            // Tangkap error jika terjadi
+            return back()->with('error', 'Terjadi kesalahan saat memproses pendaftar: ' . $e->getMessage());
+        }
+    }
+
+
+
+    public function updatependaftar(Request $request, $user_id)
+    {
+        // Validate the request data
+        $request->validate([
+            'nama_lengkap' => 'required|string|max:255',
+            'address_ktp' => 'required|string',
+            'address_now' => 'required|string',
+            'kecamatan' => 'required|string|max:50',
+            'province_id' => 'required|string|max:10',
+            'city_id' => 'required|string|max:10',
+            'telp_number' => 'required|string|max:20',
+            'phone_number' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
+            'tgl_lahir' => 'required|date',
+            'kewarganegaraan' => 'required|string',
+            'nama_kewarganegaraan' => 'nullable|string|max:255',
+            'tempat_lahir' => 'required|string|max:255',
+            'province_id_lahir' => 'string|max:10',
+            'city_id_lahir' => 'string|max:10',
+            'negara_lahir' => 'nullable|string|max:255',
+            'jenis_kelamin' => 'required|string',
+            'status_menikah' => 'required|string',
+            'agama_id' => 'required|string|max:10',
+            'foto' => 'mimes:jpg,jpeg,png|max:2048',
+            'video' => 'mimes:mp4,avi,mov|max:20480',
+        ]);
+
+        // Mendapatkan data pengguna berdasarkan ID, atau gagal jika tidak ditemukan
+        $accountUser = AccountUser::where('user_id', $user_id)->firstOrFail();
+
+        // Initialize data array
+        $data = [
+            'nama_lengkap' => $request->input('nama_lengkap'),
+            'address_ktp' => $request->input('address_ktp'),
+            'address_now' => $request->input('address_now'),
+            'kecamatan' => $request->input('kecamatan'),
+            'province_id' => $request->input('province_id'),
+            'city_id' => $request->input('city_id'),
+            'telp_number' => $request->input('telp_number'),
+            'phone_number' => $request->input('phone_number'),
+            'email' => $request->input('email'),
+            'tgl_lahir' => $request->input('tgl_lahir'),
+            'kewarganegaraan' => $request->input('kewarganegaraan'),
+            'status_menikah' => $request->input('status_menikah'),
+            'agama_id' => $request->input('agama_id'),
+        ];
+
+        // Check the value of kewarganegaraan
+        $kewarganegaraan = $request->input('kewarganegaraan');
+
+        // dd($kewarganegaraan);
+
+        // Check the value of kewarganegaraan
+        $kewarganegaraan = $request->input('kewarganegaraan');
+
+        // Check the value of kewarganegaraan
+        $kewarganegaraan = $request->input('kewarganegaraan');
+
+        if ($kewarganegaraan === 'wna') {
+            $data['nama_kewarganegaraan'] = $request->input('nama_kewarganegaraan');
+            $data['negara_lahir'] = $request->input('negara_lahir');
+            $data['tempat_lahir'] = null; // Use null to allow database to handle it
+            $data['province_id_lahir'] = null; // Use null to allow database to handle it
+            $data['city_id_lahir'] = null; // Use null to allow database to handle it
+        } else {
+            $data['nama_kewarganegaraan'] = null;
+            $data['negara_lahir'] = null;
+            $data['tempat_lahir'] = $request->input('tempat_lahir');
+            $data['province_id_lahir'] = $request->input('province_id_lahir');
+            $data['city_id_lahir'] = $request->input('city_id_lahir');
+        }
+
+        // Handle file uploads
+        if ($request->hasFile('foto')) {
+            // Get old photo file name
+            $oldFoto = $accountUser->foto;
+
+            // Remove old photo file if it exists
+            if ($oldFoto && Storage::exists('public/foto/' . $oldFoto)) {
+                Storage::delete('public/foto/' . $oldFoto);
+            }
+
+            // Store new photo file
+            $file = $request->file('foto');
+            $filename = time() . '-' . md5($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/foto', $filename);
+            $data['foto'] = $filename;
+        }
+
+        if ($request->hasFile('video')) {
+            // Get old video file name
+            $oldVideo = $accountUser->video;
+
+            // Remove old video file if it exists
+            if ($oldVideo && Storage::exists('public/video/' . $oldVideo)) {
+                Storage::delete('public/video/' . $oldVideo);
+            }
+
+            // Store new video file
+            $file = $request->file('video');
+            $filename = time() . '-' . md5($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/video', $filename);
+            $data['video'] = $filename;
+        }
+
+        // Update the account user
+        $accountUser->update($data);
+
+        return redirect('/listakunpengguna')->with('success', 'Data Pendaftaran Berhasil Dirubah');
     }
 
     public function updatepengguna(Request $request, $userId)
@@ -89,8 +284,6 @@ class AdminController
             return back()->with('error', 'Terjadi kesalahan yang tidak terduga. Silakan coba lagi.');
         }
     }
-
-
 
     public function listakunpengguna(Request $request)
     {

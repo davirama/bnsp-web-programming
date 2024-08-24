@@ -78,13 +78,13 @@
                                             class="inline-block bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-300">
                                             Edit Akun
                                         </a>
-
                                         @if ($account->status_daftar == 'Menunggu Validasi Admin')
-                                            <a href="{{ route('editpengguna', $account->user_id) }}"
+                                            <a href="{{ route('formvalidasi', $account->user_id) }}"
                                                 class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
                                                 Validasi
                                             </a>
                                         @endif
+
                                     </div>
                                 </td>
                             </tr>

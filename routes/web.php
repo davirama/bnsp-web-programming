@@ -30,4 +30,13 @@ Route::middleware([AdminOnly::class])->group(function () {
   Route::get('/editpengguna/{user_id}', [AdminController::class, 'editpengguna'])->name('editpengguna');
   // Route untuk update pengguna
   Route::put('/updatepengguna/{user_id}', [AdminController::class, 'updatepengguna'])->name('updatepengguna');
+
+  // Route untuk validasi pendaftar
+  Route::get('/halamanvalidasi/{user_id}', [AdminController::class, 'formvalidasi'])->name('formvalidasi');
+
+  // Route untuk update pendaftar
+  Route::put('/updatependaftar/{user_id}', [AdminController::class, 'updatependaftar'])->name('updatependaftar');
+
+  Route::put('/terima-validasi/{user_id}', [AdminController::class, 'terimaValidasi'])->name('terimaValidasi');
+  Route::put('/tolak-validasi/{user_id}', [AdminController::class, 'tolakValidasi'])->name('tolakValidasi');
 });
