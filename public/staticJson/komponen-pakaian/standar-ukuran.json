@@ -1,0 +1,53 @@
+{
+  "Ukuran Standar (XS-XXXXL)": [
+    {"ukuran": "XS"},
+    {"ukuran": "S"},
+    {"ukuran": "M"},
+    {"ukuran": "L"},
+    {"ukuran": "XL"},
+    {"ukuran": "XXL"},
+    {"ukuran": "XXXL"},
+    {"ukuran": "XXXXL"},
+    {"ukuran": "FREE SIZE"}
+  ],
+  "Ukuran Kaki EU (35-48)": [
+    {"ukuran": "35"},
+    {"ukuran": "36"},
+    {"ukuran": "37"},
+    {"ukuran": "38"},
+    {"ukuran": "39"},
+    {"ukuran": "40"},
+    {"ukuran": "41"},
+    {"ukuran": "42"},
+    {"ukuran": "43"},
+    {"ukuran": "44"},
+    {"ukuran": "45"},
+    {"ukuran": "46"},
+    {"ukuran": "47"},
+    {"ukuran": "48"}
+  ],
+  "Ukuran Pinggang (24-45)": [
+    {"ukuran": "24"},
+    {"ukuran": "25"},
+    {"ukuran": "26"},
+    {"ukuran": "27"},
+    {"ukuran": "28"},
+    {"ukuran": "29"},
+    {"ukuran": "30"},
+    {"ukuran": "31"},
+    {"ukuran": "32"},
+    {"ukuran": "33"},
+    {"ukuran": "34"},
+    {"ukuran": "35"},
+    {"ukuran": "36"},
+    {"ukuran": "37"},
+    {"ukuran": "38"},
+    {"ukuran": "39"},
+    {"ukuran": "40"},
+    {"ukuran": "41"},
+    {"ukuran": "42"},
+    {"ukuran": "43"},
+    {"ukuran": "44"},
+    {"ukuran": "45"}
+  ]
+}

@@ -1,0 +1,53 @@
+{
+    "categories": [
+      { "name": "Lifestyle" },
+      { "name": "Sejarah" },
+      { "name": "Trifting Tips & Tricks" },
+      { "name": "Bisnis" },
+      { "name": "Pengetahuan Brand" },
+      { "name": "Promosi" }
+    ],
+    "articles": [
+      {
+        "judul": "Title 1",
+        "slug": "title-1",
+        "isi": "Content 1",
+        "tanggal": "Jan 24, 2024",
+        "imageUrl": "https://c4.wallpaperflare.com/wallpaper/60/116/54/payday-2-dallas-heist-wallpaper-thumb.jpg",
+        "category": "Lifestyle"
+      },
+      {
+        "judul": "Title 2",
+        "slug": "Title-2",
+        "isi": "Content 2",
+        "tanggal": "April 18, 2024",
+        "imageUrl": "https://c4.wallpaperflare.com/wallpaper/60/116/54/payday-2-dallas-heist-wallpaper-thumb.jpg",
+        "category": "Bisnis"
+      },
+      {
+        "judul": "Title 3",
+        "slug": "title-3",
+        "isi": "Content 3",
+        "tanggal": "Jan 24, 2024",
+        "imageUrl": "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg",
+        "category": "Lifestyle"
+      },
+      {
+        "judul": "Title 4",
+        "slug": "Title-4",
+        "isi": "Content 4",
+        "tanggal": "April 18, 2024",
+        "imageUrl": "https://c4.wallpaperflare.com/wallpaper/60/116/54/payday-2-dallas-heist-wallpaper-thumb.jpg",
+        "category": "Sejarah"
+      },
+      {
+        "judul": "Title 5",
+        "slug": "Title-5",
+        "isi": "Content 5",
+        "tanggal": "April 18, 2024",
+        "imageUrl": "https://c4.wallpaperflare.com/wallpaper/60/116/54/payday-2-dallas-heist-wallpaper-thumb.jpg",
+        "category": "Pengetahuan Brand"
+      }
+    ]
+  }
+  

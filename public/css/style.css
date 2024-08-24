@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* Menampilkan menu saat tombol dihover */
+
+#profil-menu-container:hover #profil-menu-navbar {
+    display: block;
+}
+
+.custom-ease-in {
+    width: 0;
+    transition: width 0.5s ease-in-out;
+}
+
+button:hover .custom-ease-in {
+    width: 100%;
+}
+
+a:hover .custom-ease-in {
+    width: 100%;
+}
+
+#toast-login {
+    position: fixed;
+    top: 10px; /* Mulai dari posisi tertentu */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    animation: slideIn 0.5s forwards, slideOut 0.5s 2.5s forwards;
+}
+
+@media (min-width: 0px) {
+        #baris-card {
+            margin-right: -280%;
+        }
+    }
+ @media (min-width: 375px) {
+        #baris-card {
+            margin-right: -220%;
+        }
+    }
+ @media (min-width: 425px) {
+        #baris-card {
+            margin-right: -180%;
+        }
+    }
+
+ @media (min-width: 768px) {
+        #baris-card {
+            margin-right: -50%;
+        }
+    }
+ @media (min-width: 1024px) {
+        #baris-card {
+            margin-right: -10%;
+        }
+    }
+ @media (min-width: 1440px) {
+        #baris-card {
+            margin-right: -0%;
+        }
+    }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        top: -100px; /* Mulai dari luar layar atas */
+    }
+    to {
+        opacity: 1;
+        top: 10px; /* Posisi akhir yang diinginkan */
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        top: 10px; /* Posisi akhir sebelum menghilang */
+    }
+    to {
+        opacity: 0;
+        top: -100px; /* Kembali ke luar layar atas saat menghilang */
+    }
+}
+
+
+
+
+
+

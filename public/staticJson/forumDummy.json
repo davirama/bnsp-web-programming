@@ -1,0 +1,100 @@
+{
+"categories": [
+    { "name": "Recent" },
+    { "name": "Most Viewed" },
+    { "name": "Brand Knowledge" },
+    { "name": "Thrift Activities" }
+],
+"forums": [
+    {
+        "judul": "Check Originalitas Sepatu Vans",
+        "slug": "Check-Originalitas-Sepatu-Vans",
+        "pertanyaan": "Saya telah membeli sepatu vans di mall graha, tetapi saya tidak membelinya di toko asli dari vans. sekarang saya bingung apakah sepatu yang saya beli asli atau bukan. apakah ada ciri ciri tertentu untuk menentukan asli atau tidaknya produk vans",
+        "categories": "Brand Knowledge",
+        "tanggal": "21, Des 2024",
+        "likesCount": "31",
+        "commentCount": "4",
+        "validated": true,
+        "penulis": {
+        "nama": "Davi Rama",
+        "email": "davi@example.com"
+        }
+    },
+    {
+        "judul": "Ciri Ciri Nike Jordan",
+        "slug": "Ciri-Ciri-Nike-Jordan",
+        "pertanyaan": "Saya telah membeli sepatu Nike di mall graha, tetapi saya tidak membelinya di toko asli dari Nike. sekarang saya bingung apakah sepatu yang saya beli asli atau bukan. apakah ada ciri ciri tertentu untuk menentukan asli atau tidaknya produk Nike",
+        "categories": "Brand Knowledge",
+        "tanggal": "1, Apr 2024",
+        "likesCount": "521",
+        "commentCount": "20",
+        "validated": false,
+        "penulis": {
+        "nama": "Athar Rizal",
+        "email": "Athar@example.com"
+        }
+    },
+    {
+        "judul": "Bagaimana Cara Menemukan Barang Berkualitas di Pasar Loak?",
+        "slug": "Bagaimana-Cara-Menemukan-Barang-Berkualitas-di-Pasar-Loak",
+        "pertanyaan": "Saya ingin mulai berbelanja di pasar loak untuk mencari barang-barang berkualitas dengan harga terjangkau. Apa tips dan trik yang dapat Anda bagikan untuk menemukan barang berkualitas di pasar loak, khususnya untuk pakaian bekas?",
+        "categories": "Thrift Activities",
+        "tanggal": "12, Jan 2024",
+        "likesCount": "312",
+        "commentCount": "5",
+        "validated": false,
+        "penulis": {
+            "nama": "Citra Wardani",
+            "email": "citraw@example.com"
+        }
+    },
+    {
+    "judul": "Apakah Ada Cara Mudah untuk Mendaur Ulang Pakaian Bekas?",
+    "slug": "Apakah-Ada-Cara-Mudah-untuk-Mendaur-Ulang-Pakaian-Bekas",
+    "pertanyaan": "Saya ingin melakukan mendaur ulang pakaian bekas, tetapi saya tidak tahu harus mulai dari mana. Apakah ada cara mudah dan efektif untuk mendaur ulang pakaian bekas menjadi barang yang berguna atau bahkan pakaian baru?",
+    "categories": "Thrift Activities",
+    "tanggal": "21, Jan 2024",
+    "likesCount": "2131",
+    "commentCount": "21",
+    "validated": true,
+    "penulis": {
+        "nama": "Budi Santoso",
+        "email": "budis@example.com"
+    }
+    },
+    {
+    "judul": "Tips Mengenali Kualitas Pakaian Bekas yang Baik",
+    "slug": "Tips-Mengenali-Kualitas-Pakaian-Bekas-yang-Baik",
+    "pertanyaan": "Saya sering kesulitan dalam mengenali kualitas pakaian bekas yang saya beli. Apa saja ciri-ciri yang harus saya perhatikan untuk mengenali pakaian bekas yang berkualitas dan tahan lama?",
+    "categories": "Thrift Activities",
+    "tanggal": "16, Mar 2024",
+    "likesCount": "1451",
+    "commentCount": "4",
+    "validated": false,
+    "penulis": {
+        "nama": "Rani Putri",
+        "email": "ranip@example.com"
+    }
+    }
+],
+"responses":[
+    {
+        "response": "Ciri ciri Brand tersebut original adalah ......",
+        "tanggal": "16, Mar 2024",
+        "likesCount": "61",
+        "penulis": {
+            "nama": "Rani Putri",
+            "email": "ranip@example.com"
+        }
+    },
+    {
+        "response": "berdasarkan penjelasan dari CEO NIKE ciri ciri sepatu NIKE yang original adalah bla bla bla",
+        "tanggal": "16, Mar 2024",
+        "likesCount": "8",
+        "penulis": {
+            "nama": "Rani Putri",
+            "email": "ranip@example.com"
+        }
+    }
+]
+}

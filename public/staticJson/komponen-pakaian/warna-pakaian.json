@@ -1,0 +1,26 @@
+{
+  "warna_pakaians": [
+    {"nama": "Abu-abu", "kode": "#808080"},
+    {"nama": "Coklat", "kode": "#A52A2A"},
+    {"nama": "Hijau", "kode": "#008000"},
+    {"nama": "Hitam", "kode": "#000000"},
+    {"nama": "Merah", "kode": "#FF0000"},
+    {"nama": "Navy", "kode": "#000080"},
+    {"nama": "Olive", "kode": "#808000"},
+    {"nama": "Putih", "kode": "#FFFFFF"},
+    {"nama": "Biru", "kode": "#0000FF"},
+    {"nama": "Kuning", "kode": "#FFFF00"},
+    {"nama": "Oranye", "kode": "#FFA500"},
+    {"nama": "Pink", "kode": "#FFC0CB"},
+    {"nama": "Ungu", "kode": "#800080"},
+    {"nama": "Kombinasi", "kode": "#FFFFFF"},
+    {"nama": "Coklat Tua", "kode": "#8B4513"},
+    {"nama": "Cream", "kode": "#FFFDD0"},
+    {"nama": "Biru Muda", "kode": "#ADD8E6"},
+    {"nama": "Merah Muda", "kode": "#FF69B4"},
+    {"nama": "Hijau Tua", "kode": "#006400"},
+    {"nama": "Gold", "kode": "#FFD700"},
+    {"nama": "Silver", "kode": "#C0C0C0"}
+  ]
+}
+
