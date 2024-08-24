@@ -18,7 +18,7 @@ class UserController
                 return redirect('/dashboardpeserta')->with('success', 'Berhasil Login');
             }
             if ($user->role == "admin") {
-                return redirect('/halamanregis')->with('success', 'Berhasil Login');
+                return redirect('/dashboardadmin')->with('success', 'Berhasil Login');
             }
         }
         Auth::logout();

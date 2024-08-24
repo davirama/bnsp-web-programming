@@ -27,6 +27,116 @@ use Illuminate\Validation\ValidationException;
 
 class AdminController
 {
+    public function dashboardadmin()
+    {
+        // Logika lain yang diperlukan sebelum mengarahkan ke view, jika ada
+        return view('admin.dashboard');
+    }
+    public function editpengguna($user_id)
+    {
+        // Mengambil data pengguna berdasarkan user_id
+        $account = AccountUser::find($user_id);
+
+        // Jika pengguna tidak ditemukan, kembalikan ke halaman sebelumnya dengan pesan error
+        if (!$account) {
+            return redirect()->back()->with('error', 'Pengguna tidak ditemukan.');
+        }
+
+        // Mengembalikan data ke view editpengguna
+        return view('admin.editpengguna', compact('account'));
+    }
+
+    public function updatepengguna(Request $request, $userId)
+    {
+        try {
+            // Validasi data input
+            $validatedData = $request->validate([
+                'email' => 'required|string|email|min:10',
+                'password' => 'nullable|string|min:5', // Password bisa kosong
+                'phone_number' => 'required|numeric|digits_between:9,20',
+                'nisn' => 'required|numeric|digits_between:5,20',
+            ]);
+
+            // Cari akun berdasarkan userId
+            $account = AccountUser::findOrFail($userId);
+
+            // Siapkan data untuk diupdate
+            $updateData = [
+                'email' => $validatedData['email'],
+                'phone_number' => $validatedData['phone_number'],
+                'nisn' => $validatedData['nisn'],
+            ];
+
+            // Update password hanya jika ada input password baru
+            if ($request->filled('password')) {
+                $updateData['password'] = Hash::make($validatedData['password']);
+            }
+
+            // Update data ke database
+            $account->update($updateData);
+
+            // Redirect ke halaman sebelumnya dengan pesan sukses
+            return redirect('/listakunpengguna')->with('success', 'Akun pengguna berhasil diperbarui');
+        } catch (ValidationException $e) {
+            // Tangkap error validasi
+            return back()->withErrors($e->errors())->withInput();
+        } catch (QueryException $e) {
+            // Tangkap error SQL (misalnya, constraint violation) dan ambil pesan error
+            $errorMessage = $e->getMessage();
+            return back()->with('error', 'Terjadi kesalahan saat memperbarui data: ' . $errorMessage);
+        } catch (\Exception $e) {
+            // Tangkap error umum
+            return back()->with('error', 'Terjadi kesalahan yang tidak terduga. Silakan coba lagi.');
+        }
+    }
+
+
+
+    public function listakunpengguna(Request $request)
+    {
+        // Ambil parameter filter, sorting, dan pencarian dari request
+        $statusFilter = $request->input('status_daftar', ''); // Default empty string jika tidak ada filter
+        $searchTerm = $request->input('search', ''); // Default empty string jika tidak ada pencarian
+        $sortBy = $request->input('sort_by', 'email'); // Default sort by 'email'
+        $sortOrder = $request->input('sort_order', 'asc'); // Default sort order 'asc'
+
+        // Validasi sortBy agar hanya kolom yang valid
+        $validSortColumns = ['email', 'nisn', 'phone_number', 'status_daftar'];
+        if (!in_array($sortBy, $validSortColumns)) {
+            $sortBy = 'email'; // Atur ke default jika kolom tidak valid
+        }
+
+        // Validasi sortOrder agar hanya 'asc' atau 'desc'
+        if (!in_array($sortOrder, ['asc', 'desc'])) {
+            $sortOrder = 'asc'; // Atur ke default jika nilai tidak valid
+        }
+
+        // Query untuk mengambil data
+        $query = AccountUser::where('role', 'siswa');
+
+        // Terapkan filter jika ada
+        if ($statusFilter) {
+            $query->where('status_daftar', $statusFilter);
+        }
+
+        // Terapkan pencarian jika ada
+        if ($searchTerm) {
+            $query->where('email', 'like', "%{$searchTerm}%");
+        }
+
+        // Terapkan sorting
+        $accounts = $query->orderBy($sortBy, $sortOrder)->get();
+
+        // Kirim data ke view
+        return view('admin.listakunpengguna', [
+            'accounts' => $accounts,
+            'statusFilter' => $statusFilter,
+            'searchTerm' => $searchTerm,
+            'sortBy' => $sortBy,
+            'sortOrder' => $sortOrder,
+        ]);
+    }
+
 
     public function daftar(Request $request)
     {

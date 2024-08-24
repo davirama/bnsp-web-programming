@@ -24,4 +24,10 @@ Route::middleware([PesertaOnly::class])->group(function () {
 Route::middleware([AdminOnly::class])->group(function () {
   Route::view('/halamanregis', 'admin.regis')->name('halamanregis');
   Route::post('/regispeserta', [AdminController::class, 'regispeserta'])->name('regispeserta');
+  Route::get('/dashboardadmin', [AdminController::class, 'dashboardadmin'])->name('dashboardadmin');
+  Route::get('/listakunpengguna', [AdminController::class, 'listakunpengguna'])->name('listakunpengguna');
+  // Route untuk halaman edit pengguna
+  Route::get('/editpengguna/{user_id}', [AdminController::class, 'editpengguna'])->name('editpengguna');
+  // Route untuk update pengguna
+  Route::put('/updatepengguna/{user_id}', [AdminController::class, 'updatepengguna'])->name('updatepengguna');
 });

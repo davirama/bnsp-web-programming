@@ -28,8 +28,8 @@
                                 <span class="text-white mr-4">{{ Auth::user()->email }}</span>
                                 <span class="text-gray-400 mr-4">({{ Auth::user()->role }})</span>
                             </li>
-                            <li>
-                                @if (isset($account) && $account->role === 'admin')
+                            @if (isset($account) && $account->role === 'admin')
+                                <li>
                                     <form action="{{ route('halamanregis') }}" method="GET">
                                         @csrf
                                         <button type="submit"
@@ -37,8 +37,18 @@
                                             Register Peserta
                                         </button>
                                     </form>
-                                @endif
-                            </li>
+                                </li>
+                            @endif
+                            @if (isset($account) && $account->role === 'siswa')
+                                <li>
+                                    <form action="{{ route('dashboardpeserta') }}" method="GET">
+                                        @csrf
+                                        <button type="submit" class="block py-2 px-3 text-white ">
+                                            Dashboard
+                                        </button>
+                                    </form>
+                                </li>
+                            @endif
 
 
                             <li>
