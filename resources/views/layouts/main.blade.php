@@ -30,11 +30,10 @@
                             </li>
                             @if (isset($account) && $account->role === 'admin')
                                 <li>
-                                    <form action="{{ route('halamanregis') }}" method="GET">
+                                    <form action="{{ route('dashboardadmin') }}" method="GET">
                                         @csrf
-                                        <button type="submit"
-                                            class="block py-2 px-3 text-white rounded bg-blue-500 hover:bg-blue-600">
-                                            Register Peserta
+                                        <button type="submit" class="block py-2 px-3 text-white rounded ">
+                                            Dashboard
                                         </button>
                                     </form>
                                 </li>

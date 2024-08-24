@@ -4,6 +4,14 @@
     <div class="flex justify-center bg-white p-5">
         <div class="bg-white rounded-lg shadow-lg p-8 mx-4 md:mx-auto w-full max-w-full">
             <h1 class="text-center text-3xl font-bold mb-6">List Akun Pengguna</h1>
+            <div class="flex justify-center p-2 text-lg">
+                <form action="{{ route('halamanregis') }}" method="GET">
+                    @csrf
+                    <button type="submit" class="block py-2 px-3 text-white rounded bg-blue-500 hover:bg-blue-600">
+                        Register Peserta
+                    </button>
+                </form>
+            </div>
 
             <div class="mb-6">
                 <!-- Search and Filter Form -->
