@@ -9,22 +9,20 @@
                 <button>
                     <a href="/listakunpengguna"
                         class="p-2 rounded-md bg-green-500 text-white font-semibold flex items-center justify-center space-x-2">
-                        <span class="material-symbols-outlined">
-                            description
-                        </span>
+                        <span class="material-symbols-outlined"> description </span>
                         <span>List Akun Pengguna</span>
                     </a>
                 </button>
                 <button>
                     <a href=""
                         class="p-2 rounded-md bg-red-500 text-white font-semibold flex items-center justify-center space-x-2">
-                        <span class="material-symbols-outlined">
-                            download
-                        </span>
+                        <span class="material-symbols-outlined"> download </span>
                         <span>List Akun Pendaftar</span>
                     </a>
                 </button>
+
             </div>
+
         </div>
     </div>
 @endsection

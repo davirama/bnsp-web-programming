@@ -39,4 +39,5 @@ Route::middleware([AdminOnly::class])->group(function () {
 
   Route::put('/terima-validasi/{user_id}', [AdminController::class, 'terimaValidasi'])->name('terimaValidasi');
   Route::put('/tolak-validasi/{user_id}', [AdminController::class, 'tolakValidasi'])->name('tolakValidasi');
+  Route::delete('/hapus-pengguna/{user_id}', [AdminController::class, 'hapusPengguna'])->name('hapusPengguna');
 });

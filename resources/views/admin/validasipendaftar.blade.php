@@ -288,7 +288,7 @@
             <div class="grid grid-cols-2 my-4 gap-4">
                 <div>
                     <form action="{{ route('terimaValidasi', $account->user_id) }}" method="POST"
-                        onsubmit="return confirmValidation()">
+                        onsubmit="return confirm('Are you sure you want to validate this user?');">
                         @csrf
                         @method('PUT')
                         <button type="submit"
@@ -298,38 +298,32 @@
                     </form>
                 </div>
 
-                <script>
-                    function confirmValidation() {
-                        return confirm("Apakah Anda yakin ingin menerima validasi pendaftar?");
-                    }
-                </script>
-
                 <div>
-                    <form id="tolakValidasiForm" action="{{ route('tolakValidasi', $account->user_id) }}"
-                        method="POST">
+                    <form id="tolakValidasiForm" action="{{ route('tolakValidasi', $account->user_id) }}" method="POST"
+                        onsubmit="confirmTolakValidasi()">
                         @csrf
                         @method('PUT')
-                        <button type="button" onclick="confirmTolakValidasi()"
+                        <button type="button"
                             class="w-full bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
                             Tolak Validasi
                         </button>
                     </form>
                 </div>
 
-                <script>
-                    function confirmTolakValidasi() {
-                        if (confirm('Apakah Anda yakin ingin menolak validasi pendaftar?')) {
-                            document.getElementById('tolakValidasiForm').submit();
-                        }
-                    }
-                </script>
+
 
             </div>
 
         </div>
     </div>
 
-
+    <script>
+        function confirmTolakValidasi() {
+            if (confirm('Apakah Anda yakin ingin menolak validasi pendaftar?')) {
+                document.getElementById('tolakValidasiForm').submit();
+            }
+        }
+    </script>
     <script>
         function previewFoto(event) {
             const input = event.target;

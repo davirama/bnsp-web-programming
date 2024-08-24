@@ -33,8 +33,18 @@
                         value="{{ old('nisn', $account->nisn) }}" required />
                 </div>
                 <button type="submit"
-                    class="w-full bg-blue-600 text-white text-sm font-medium rounded-lg p-2.5 focus:outline-none focus:ring-4 focus:ring-blue-300">Update
+                    class="w-full bg-blue-600 text-white font-medium rounded-lg p-2.5 focus:outline-none focus:ring-4 focus:ring-blue-300">Update
                     Pengguna</button>
+
+            </form>
+            <form action="{{ route('hapusPengguna', $account->user_id) }}" method="POST"
+                onsubmit="return confirm('Are you sure you want to delete this user?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                    class="w-full bg-red-600 text-white font-semibold mt-3 py-2 px-4 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300">
+                    Hapus Akun
+                </button>
             </form>
         </div>
     </div>

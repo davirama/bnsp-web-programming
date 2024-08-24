@@ -84,6 +84,8 @@
                                                 Validasi
                                             </a>
                                         @endif
+                                        <!-- New delete button -->
+
 
                                     </div>
                                 </td>

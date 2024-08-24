@@ -47,6 +47,23 @@ class AdminController
         return view('admin.editpengguna', compact('account'));
     }
 
+    public function hapusPengguna($user_id)
+    {
+        try {
+            // Temukan pengguna berdasarkan user_id
+            $account = AccountUser::findOrFail($user_id);
+
+            // Hapus data pengguna
+            $account->delete();
+
+            // Redirect ke halaman list akun pengguna dengan pesan sukses
+            return redirect()->route('listakunpengguna')->with('success', 'Pengguna berhasil dihapus.');
+        } catch (\Exception $e) {
+            // Tangkap error jika terjadi
+            return back()->with('error', 'Terjadi kesalahan saat menghapus pengguna: ' . $e->getMessage());
+        }
+    }
+
     public function formvalidasi($user_id)
     {
         // Fetch the user with the given user_id
