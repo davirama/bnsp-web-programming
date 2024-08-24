@@ -2,6 +2,7 @@
 
 @section('contentMain')
     <div class="flex justify-center bg-white">
+
         <div class="bg-white rounded-lg shadow-lg p-8 mx-4 md:mx-auto w-full max-w-md md:max-w-lg lg:max-w-xl">
             <h1 class="text-center text-3xl font-bold mb-6">Halaman Peserta</h1>
             <div class="text-center">
@@ -19,7 +20,7 @@
                     </a>
                 </button>
                 <button>
-                    <a href=""
+                    <a href="{{ route('generatePDF', $account->user_id) }}"
                         class="p-2 rounded-md bg-red-500 text-white font-semibold flex items-center justify-center space-x-2">
                         <span class="material-symbols-outlined">
                             download
@@ -27,6 +28,7 @@
                         <span>Download Bukti Pendaftaran</span>
                     </a>
                 </button>
+
             </div>
         </div>
     </div>

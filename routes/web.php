@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'index')->name('index');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');;
+Route::get('/generate-pdf/{user_id}', [UserController::class, 'generatePDF'])->name('generatePDF');
 
 // ROUTES UNTUK PAGE YANG BUTUH MIDDLEWARE PESERTA HARUS LOGIN KELOMPOKKAN DIBAWAH SINI
 Route::middleware([PesertaOnly::class])->group(function () {

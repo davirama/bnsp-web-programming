@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AccountUser;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,5 +40,33 @@ class UserController
 
         // Redirect the user to the login page (or any other page)
         return redirect('/')->with('success', 'You have been logged out successfully.');
+    }
+
+    public function generatePDF($user_id)
+    {
+        $account = AccountUser::find($user_id);
+
+        // Prepare data for the PDF
+        $data = [
+            'title' => 'Data Peserta Pendaftaran',
+            'account' => $account,
+            // Add other data you want to pass to the view here
+        ];
+
+        // Load the view with data
+        $html = view('pdf.document', $data)->render();
+
+        // Instantiate Dompdf
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // Set paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        return $dompdf->stream('document.pdf');
     }
 }
