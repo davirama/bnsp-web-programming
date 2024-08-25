@@ -13,13 +13,13 @@
                         <span>List Akun Pengguna</span>
                     </a>
                 </button>
-                <button>
+                {{-- <button>
                     <a href=""
                         class="p-2 rounded-md bg-red-500 text-white font-semibold flex items-center justify-center space-x-2">
                         <span class="material-symbols-outlined"> download </span>
                         <span>List Akun Pendaftar</span>
                     </a>
-                </button>
+                </button> --}}
 
             </div>
 

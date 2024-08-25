@@ -300,15 +300,27 @@
 
                 <div>
                     <form id="tolakValidasiForm" action="{{ route('tolakValidasi', $account->user_id) }}" method="POST"
-                        onsubmit="confirmTolakValidasi()">
+                        onsubmit="return confirmTolakValidasi(event)">
                         @csrf
                         @method('PUT')
-                        <button type="button"
+                        <button type="submit"
                             class="w-full bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
                             Tolak Validasi
                         </button>
                     </form>
                 </div>
+                <script>
+                    function confirmTolakValidasi(event) {
+                        // Mencegah pengiriman form otomatis
+                        event.preventDefault();
+
+                        // Konfirmasi pengguna
+                        if (confirm('Apakah Anda yakin ingin menolak validasi pendaftar?')) {
+                            // Jika ya, kirimkan form
+                            document.getElementById('tolakValidasiForm').submit();
+                        }
+                    }
+                </script>
 
 
 
@@ -317,13 +329,7 @@
         </div>
     </div>
 
-    <script>
-        function confirmTolakValidasi() {
-            if (confirm('Apakah Anda yakin ingin menolak validasi pendaftar?')) {
-                document.getElementById('tolakValidasiForm').submit();
-            }
-        }
-    </script>
+
     <script>
         function previewFoto(event) {
             const input = event.target;
