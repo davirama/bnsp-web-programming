@@ -10,24 +10,28 @@
                 <br><span class="font-semibold capitalize text-yellow-500">{{ $account->message_status_daftar }}</span>
             </div>
             <div class="flex flex-col justify-center gap-3 p-3">
-                <button>
-                    <a href="/formpendaftaran"
-                        class="p-2 rounded-md bg-green-500 text-white font-semibold flex items-center justify-center space-x-2">
-                        <span class="material-symbols-outlined">
-                            description
-                        </span>
-                        <span>Data Pendaftaran Saya</span>
-                    </a>
-                </button>
-                <button>
-                    <a href="{{ route('generatePDF', $account->user_id) }}"
-                        class="p-2 rounded-md bg-red-500 text-white font-semibold flex items-center justify-center space-x-2">
-                        <span class="material-symbols-outlined">
-                            download
-                        </span>
-                        <span>Download Bukti Pendaftaran</span>
-                    </a>
-                </button>
+                @if (auth()->user()->status_daftar != 'tervalidasi')
+                    <button>
+                        <a href="/formpendaftaran"
+                            class="p-2 rounded-md bg-green-500 text-white font-semibold flex items-center justify-center space-x-2">
+                            <span class="material-symbols-outlined">
+                                description
+                            </span>
+                            <span>Data Pendaftaran Saya</span>
+                        </a>
+                    </button>
+                @endif
+                @if (auth()->user()->status_daftar != 'belum melengkapi')
+                    <button>
+                        <a href="/detailpeserta"
+                            class="p-2 rounded-md bg-red-500 text-white font-semibold flex items-center justify-center space-x-2">
+                            <span class="material-symbols-outlined">
+                                download
+                            </span>
+                            <span>Download Bukti Pendaftaran</span>
+                        </a>
+                    </button>
+                @endif
 
             </div>
         </div>

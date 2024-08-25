@@ -191,7 +191,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-700">Jenis
-                                Kelamin</label>
+                                Kelamin </label>
                             <select id="jenis_kelamin" name="jenis_kelamin"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option disabled selected value="">Silahkan Pilih Jenis Kelamin</option>
@@ -245,7 +245,7 @@
                             <div class="mt-2">
                                 <p class="text-sm text-gray-600">File Saat Ini:</p>
                                 <img id="foto-preview" src="{{ asset('storage/foto/' . $account->foto) }}"
-                                    alt="Foto" class="w-32 h-32 object-cover {{ $account->foto ? '' : 'hidden' }}">
+                                    alt="Foto" class="h-44 object-cover {{ $account->foto ? '' : 'hidden' }}">
                                 <a id="foto-link" href="{{ asset('storage/foto/' . $account->foto) }}" target="_blank"
                                     class="text-blue-500 {{ $account->foto ? '' : 'hidden' }}">
                                     {{ $account->foto }}

@@ -348,48 +348,6 @@ class AdminController
     }
 
 
-    public function daftar(Request $request)
-    {
-        try {
-            // Validasi input
-            $validatedData = $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|min:10|unique:users',
-                'password' => 'required|string|min:8',
-                'phone_number' => 'required|string|min:9',
-                'city' => 'required|string|max:100',
-                'address' => 'required|string|max:255',
-                'id_kelas' => 'required|exists:kelas,id_kelas', // Validasi id_kelas
-            ]);
-
-            // Siapkan data untuk pengguna baru
-            $userData = [
-                'name' => $validatedData['name'],
-                'email' => $validatedData['email'],
-                'password' => Hash::make($validatedData['password']),
-                'phone_number' => $validatedData['phone_number'],
-                'city' => $validatedData['city'],
-                'address' => $validatedData['address'],
-                'id_kelas' => $validatedData['id_kelas'], // Tambahkan id_kelas
-            ];
-
-            // Buat pengguna baru
-            AccountUser::create($userData);
-
-            // Redirect ke route '/' dengan pesan sukses
-            return Redirect::to('/')->with('success', 'Anda berhasil terdaftar');
-        } catch (ValidationException $e) {
-            // Tangkap error validasi
-            return back()->withErrors($e->errors())->withInput();
-        } catch (QueryException $e) {
-            // Tangkap error SQL (misalnya, constraint violation)
-            return back()->with('error', 'Terjadi kesalahan saat menyimpan data. Silakan coba lagi.');
-        } catch (\Exception $e) {
-            // Tangkap error umum
-            return back()->with('error', 'Terjadi kesalahan yang tidak terduga. Silakan coba lagi.');
-        }
-    }
-
     public function regispeserta(Request $request)
     {
         try {
@@ -416,7 +374,7 @@ class AdminController
             DB::table('account_users')->insert($userData);
 
             // Redirect ke route '/' dengan pesan sukses
-            return Redirect::to('/')->with('success', 'Anda berhasil terdaftar sebagai pendaftar siswa');
+            return Redirect::to('/listakunpengguna')->with('success', 'Anda Berhasil Mendaftarkan Calon Pendfatar');
         } catch (ValidationException $e) {
             // Tangkap error validasi
             return back()->withErrors($e->errors())->withInput();

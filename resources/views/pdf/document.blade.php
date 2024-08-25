@@ -47,7 +47,7 @@
         <div>
             <h1>Bukti Pendaftaran Mahasiswa</h1>
             <div>
-                <img src="{{ public_path('storage/foto/' . $account->foto) }}" alt="Foto Profil"
+                <img src="{{ asset('storage/foto/' . $account->foto) }}" alt="Foto Profil"
                     style="max-width: 200px; height: auto; display: block; margin-bottom: 20px;">
 
             </div>

@@ -244,7 +244,7 @@
                             <div class="mt-2">
                                 <p class="text-sm text-gray-600">File Saat Ini:</p>
                                 <img id="foto-preview" src="{{ asset('storage/foto/' . $account->foto) }}"
-                                    alt="Foto" class="w-32 h-32 object-cover {{ $account->foto ? '' : 'hidden' }}">
+                                    alt="Foto" class="h-40 object-cover {{ $account->foto ? '' : 'hidden' }}">
                                 <a id="foto-link" href="{{ asset('storage/foto/' . $account->foto) }}" target="_blank"
                                     class="text-blue-500 {{ $account->foto ? '' : 'hidden' }}">
                                     {{ $account->foto }}
