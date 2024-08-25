@@ -70,6 +70,8 @@ class PesertaController
             'phone_number' => $request->input('phone_number'),
             'email' => $request->input('email'),
             'tgl_lahir' => $request->input('tgl_lahir'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'status_menikah' => $request->input('status_menikah'),
             'kewarganegaraan' => $request->input('kewarganegaraan'),
             'agama_id' => $request->input('agama_id'),
             'status_daftar' => 'Menunggu Validasi Admin',

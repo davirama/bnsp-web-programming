@@ -5,9 +5,10 @@
         <div
             class="bg-white rounded-lg shadow-lg p-8 md:p-12 lg:p-16 mx-4 md:mx-auto w-full max-w-md md:max-w-lg lg:max-w-5xl">
             <h1 class="text-center text-3xl font-bold mb-6">Data Peserta Pendaftaran</h1>
-            <form action="{{ route('updateDataPendaftaran') }}" method="POST" onsubmit="return validateForm()"
+            <form action="{{ route('updatependaftar', $account->user_id) }}" method="POST" onsubmit="return validateForm()"
                 enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="grid grid-cols-2 gap-4 my-2">
                     <div class="p-2 border-r border-gray-300">
                         <div class="mb-4">
@@ -190,7 +191,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-700">Jenis
-                                Kelamin</label>
+                                Kelamin </label>
                             <select id="jenis_kelamin" name="jenis_kelamin"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option disabled selected value="">Silahkan Pilih Jenis Kelamin</option>
@@ -244,7 +245,7 @@
                             <div class="mt-2">
                                 <p class="text-sm text-gray-600">File Saat Ini:</p>
                                 <img id="foto-preview" src="{{ asset('storage/foto/' . $account->foto) }}"
-                                    alt="Foto" class="h-40 object-cover {{ $account->foto ? '' : 'hidden' }}">
+                                    alt="Foto" class="h-44 object-cover {{ $account->foto ? '' : 'hidden' }}">
                                 <a id="foto-link" href="{{ asset('storage/foto/' . $account->foto) }}" target="_blank"
                                     class="text-blue-500 {{ $account->foto ? '' : 'hidden' }}">
                                     {{ $account->foto }}
@@ -281,7 +282,50 @@
                 <button type="submit"
                     class="w-full bg-blue-600 text-white text-sm font-medium rounded-lg p-2.5 focus:outline-none focus:ring-4 focus:ring-blue-300">Update
                     Data</button>
+
             </form>
+
+            <div class="grid grid-cols-2 my-4 gap-4">
+                <div>
+                    <form action="{{ route('terimaValidasi', $account->user_id) }}" method="POST"
+                        onsubmit="return confirm('Are you sure you want to validate this user?');">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit"
+                            class="w-full bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
+                            Terima Validasi
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    <form id="tolakValidasiForm" action="{{ route('tolakValidasi', $account->user_id) }}" method="POST"
+                        onsubmit="return confirmTolakValidasi(event)">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit"
+                            class="w-full bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+                            Tolak Validasi
+                        </button>
+                    </form>
+                </div>
+                <script>
+                    function confirmTolakValidasi(event) {
+                        // Mencegah pengiriman form otomatis
+                        event.preventDefault();
+
+                        // Konfirmasi pengguna
+                        if (confirm('Apakah Anda yakin ingin menolak validasi pendaftar?')) {
+                            // Jika ya, kirimkan form
+                            document.getElementById('tolakValidasiForm').submit();
+                        }
+                    }
+                </script>
+
+
+
+            </div>
+
         </div>
     </div>
 
